@@ -1,0 +1,30 @@
+defaults: &defaults
+  api:
+    port: 3000
+
+  logger:
+    name: {{swagger.info.title}}
+    level: debug
+    levels:
+      trace:
+      debug: STDOUT
+      info:
+      warn:
+      error: STDERR
+      fatal:
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+  logger:
+    level: debug
+    levels:
+      trace:
+      debug: STDOUT
+      info: ./log/info.log
+      warn: ./log/warn.log
+      error: ./log/error.log
+      fatal: ./log/fatal.log
