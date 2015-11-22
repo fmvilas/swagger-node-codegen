@@ -64,7 +64,7 @@ function generateEndpoint(config, endpoint, endpoint_name) {
   _fs2.default.readFile(_path2.default.resolve(__dirname, '../templates/src/api/routes/___route.js'), 'utf8', function (err, data) {
     if (err) throw err;
 
-    var target_file = _path2.default.resolve(config.generated_dir, 'src/api/routes/', endpoint_name + '.js');
+    var target_file = _path2.default.resolve(config.target_dir, 'src/api/routes/', endpoint_name + '.js');
     var template = _handlebars2.default.compile(data.toString());
     var content = template({
       service_name: endpoint_name,
@@ -99,7 +99,7 @@ function generateService(config, service, service_name) {
   _fs2.default.readFile(_path2.default.resolve(__dirname, '../templates/src/api/services/___service.js'), 'utf8', function (err, data) {
     if (err) throw err;
 
-    var target_file = _path2.default.resolve(config.generated_dir, 'src/api/services/', service_name + '.js');
+    var target_file = _path2.default.resolve(config.target_dir, 'src/api/services/', service_name + '.js');
     var template = _handlebars2.default.compile(data.toString());
     var content = template({ service: service, openbrace: '{', closebrace: '}' });
 
@@ -111,7 +111,7 @@ function generateService(config, service, service_name) {
 
 function generateFile(options, next) {
   var templates_dir = options.templates_dir;
-  var generated_dir = options.generated_dir;
+  var target_dir = options.target_dir;
   var file_name = options.file_name;
   var root = options.root;
   var data = options.data;
@@ -122,7 +122,7 @@ function generateFile(options, next) {
     var template = _handlebars2.default.compile(content);
     var parsed_content = template(data);
     var template_path = _path2.default.relative(templates_dir, _path2.default.resolve(root, file_name));
-    var generated_path = _path2.default.resolve(generated_dir, template_path);
+    var generated_path = _path2.default.resolve(target_dir, template_path);
 
     _fs2.default.writeFile(generated_path, parsed_content, 0, 'utf8', function (err) {
       if (err) throw err;
@@ -132,13 +132,13 @@ function generateFile(options, next) {
 }
 
 function generateDirectoriesStructure(config) {
-  var generated_dir = config.generated_dir;
+  var target_dir = config.target_dir;
   var templates_dir = _path2.default.resolve(__dirname, '../templates');
 
-  _fs4.default.rmrfSync(generated_dir);
-  _fs4.default.mkdirpSync(generated_dir);
+  _fs4.default.rmrfSync(target_dir);
+  _fs4.default.mkdirpSync(target_dir);
 
-  _fs4.default.copyRecursive(templates_dir, generated_dir, function (err) {
+  _fs4.default.copyRecursive(templates_dir, target_dir, function (err) {
     if (err) throw err;
 
     var walker = _fs4.default.walk(templates_dir, {
@@ -148,13 +148,13 @@ function generateDirectoriesStructure(config) {
     walker.on('file', function (root, stats, next) {
       if (stats.name.substr(0, 3) === '___') {
         var template_path = _path2.default.relative(templates_dir, _path2.default.resolve(root, stats.name));
-        _fs2.default.unlink(_path2.default.resolve(generated_dir, template_path));
+        _fs2.default.unlink(_path2.default.resolve(target_dir, template_path));
         next();
       } else {
         generateFile({
           root: root,
           templates_dir: templates_dir,
-          generated_dir: generated_dir,
+          target_dir: target_dir,
           data: config,
           file_name: stats.name
         }, next);
@@ -187,7 +187,7 @@ module.exports.generate = function (config) {
     package: {
       name: _lodash2.default.kebabCase(_lodash2.default.result(config, 'swagger.info.title', random_name))
     },
-    generated_dir: _path2.default.resolve(_os2.default.tmpdir(), 'swagger-node-generated-code')
+    target_dir: _path2.default.resolve(_os2.default.tmpdir(), 'swagger-node-generated-code')
   });
 
   generateDirectoriesStructure(config);
