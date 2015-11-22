@@ -4,5 +4,5 @@ import uber_api from './uber.json';
 
 generator.generate({
   swagger: uber_api,
-  target_dir: path.resolve(__dirname, 'swagger-codegen-test/')
+  target_dir: path.resolve(__dirname, 'generated/')
 });
