@@ -1,5 +1,5 @@
 {
-  "name": "swagger-js-codegen",
+  "name": "swagger-node-codegen",
   "main": "./dist/codegen.js",
   "version": "0.0.1",
   "description": "A Swagger codegen for Node.js",
