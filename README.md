@@ -48,3 +48,5 @@ generator.generate({
 Francisco Méndez Vilas ([fmvilas@gmail.com](mailto:fmvilas@gmail.com))
 
 [www.fmvilas.com](http://www.fmvilas.com)
+
+This project was heavily inspired by [Swagger JS Codegen](https://github.com/wcandillon/swagger-js-codegen).
