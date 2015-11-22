@@ -14,12 +14,9 @@ app.use(cookieParser());
 /*
  * Routes
  */
-const routes = require('./routes/index');
-const wizard = require('./routes/wizard');
-const about = require('./routes/about');
-app.use('/', routes);
-app.use('/wizard', wizard);
-app.use('/about', about);
+{{#each swagger.endpoints}}
+app.use('/{{this}}', require('./routes/{{this}}'));
+{{/each}}
 
 // catch 404
 app.use((req, res, next) => {
