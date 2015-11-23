@@ -15,7 +15,13 @@ The generated code features:
 
 ## How to use it?
 
-```npm install swagger-node-codegen```
+> If you want to use the CLI to generate your APIs please check
+> 
+> [swagger-node-codegen-cli](https://github.com/fmvilas/swagger-node-codegen-cli)
+
+```bash
+npm install swagger-node-codegen
+```
 
 Now, in your app:
 
@@ -49,4 +55,4 @@ Francisco Méndez Vilas ([fmvilas@gmail.com](mailto:fmvilas@gmail.com))
 
 [www.fmvilas.com](http://www.fmvilas.com)
 
-This project was heavily inspired by [Swagger JS Codegen](https://github.com/wcandillon/swagger-js-codegen).
+This project was heavily inspired by [Swagger JS Codegen](https://github.com/wcandillon/swagger-js-codegen) made by [William Candillon](https://github.com/wcandillon).
