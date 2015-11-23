@@ -16,7 +16,6 @@ The generated code features:
 ## How to use it?
 
 > If you want to use the CLI to generate your APIs please check
-> 
 > [swagger-node-codegen-cli](https://github.com/fmvilas/swagger-node-codegen-cli)
 
 ```bash
