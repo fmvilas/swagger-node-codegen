@@ -38,6 +38,8 @@ var getOperationId = function getOperationId(method_name, path_name) {
 function getViewForSwagger2(swagger) {
   var authorized_methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'COPY', 'HEAD', 'OPTIONS', 'LINK', 'UNLIK', 'PURGE', 'LOCK', 'UNLOCK', 'PROPFIND'];
 
+  swagger.basePath = swagger.basePath || '/v1';
+
   _lodash2.default.each(swagger.paths, function (path, path_name) {
     path.endpointName = path_name.split('/')[1];
     _lodash2.default.each(path, function (method, method_name) {

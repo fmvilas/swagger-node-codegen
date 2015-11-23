@@ -1,7 +1,7 @@
 {
   "name": "swagger-node-codegen",
   "main": "./dist/codegen.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Swagger codegen for Node.js",
   "scripts": {
     "test": "babel-node tests/test"
