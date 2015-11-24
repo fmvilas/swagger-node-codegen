@@ -61,6 +61,8 @@ function getViewForSwagger2(_swagger) {
     swagger = _swagger;
   } else if (typeof _swagger === 'string') {
     swagger = loadFile(_swagger);
+  } else {
+    throw new Error('Could not find a valid swagger definition: ' + _swagger);
   }
 
   swagger.basePath = swagger.basePath || '/v1';
