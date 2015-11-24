@@ -32,6 +32,9 @@ var your_api = require('./your-api.json');
 generator.generate({
   swagger: your_api,
   target_dir: path.resolve(__dirname, './your-api')
+}, function (err) {
+  if (err) return console.error('Something went wrong:', err.message);
+  console.log('Done!');
 });
 ```
 
@@ -45,6 +48,24 @@ import your_api from './your-api.json';
 generator.generate({
   swagger: your_api,
   target_dir: path.resolve(__dirname, './your-api')
+}, (err) => {
+  if (err) return console.error(`Something went wrong: ${err.message}`);
+  console.log('Done!');
+});
+```
+
+> The **swagger** parameter can be either JSON or a path pointing to a JSON or YAML file.
+
+```js
+import path from 'path';
+import generator from 'swagger-node-codegen';
+
+generator.generate({
+  swagger: path.resolve(__dirname, './your-api.yml'),
+  target_dir: path.resolve(__dirname, './your-api')
+}, (err) => {
+  if (err) return console.error(`Something went wrong: ${err.message}`);
+  console.log('Done!');
 });
 ```
 
