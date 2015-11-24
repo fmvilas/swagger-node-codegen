@@ -3,16 +3,22 @@ import generator from '../dist/codegen.js';
 import uber_api from './uber.json';
 
 generator.generate({
-  swagger: path.resolve(__dirname, 'iris.yml'),
+  swagger: path.resolve(__dirname, 'irisdd.yml'),
   target_dir: path.resolve(__dirname, 'generated-yaml/')
+}, (err) => {
+  if (err) console.log(err.message);
 });
 
 generator.generate({
   swagger: path.resolve(__dirname, 'uber.json'),
   target_dir: path.resolve(__dirname, 'generated-json/')
+}, (err) => {
+  if (err) console.log(err.message);
 });
 
 generator.generate({
   swagger: uber_api,
   target_dir: path.resolve(__dirname, 'generated/')
+}, (err) => {
+  if (err) console.log(err.message);
 });

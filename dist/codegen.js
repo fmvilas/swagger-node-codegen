@@ -173,10 +173,14 @@ function generateDirectoriesStructure(config) {
   });
 }
 
-module.exports.generate = function (config) {
+module.exports.generate = function (config, callback) {
   var random_name = (0, _projectNameGenerator2.default)().dashed;
 
-  config.swagger = (0, _swagger2.default)(config.swagger);
+  try {
+    config.swagger = (0, _swagger2.default)(config.swagger);
+  } catch (e) {
+    return callback(e);
+  }
 
   _lodash2.default.defaultsDeep(config, {
     swagger: {
@@ -190,5 +194,11 @@ module.exports.generate = function (config) {
     target_dir: _path2.default.resolve(_os2.default.tmpdir(), 'swagger-node-generated-code')
   });
 
-  generateDirectoriesStructure(config);
+  try {
+    generateDirectoriesStructure(config);
+  } catch (e) {
+    return callback(e);
+  }
+
+  return callback(null);
 };
