@@ -13,7 +13,25 @@ var _wordWrap = require('word-wrap');
 
 var _wordWrap2 = _interopRequireDefault(_wordWrap);
 
+var _yamljs = require('yamljs');
+
+var _yamljs2 = _interopRequireDefault(_yamljs);
+
+var _jsonfile = require('jsonfile');
+
+var _jsonfile2 = _interopRequireDefault(_jsonfile);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+var loadFile = function loadFile(path) {
+  if (path.match(/\.yml$/)) {
+    return _yamljs2.default.load(path);
+  }
+
+  return _jsonfile2.default.readFileSync(path);
+};
 
 var getOperationId = function getOperationId(method_name, path_name) {
   if (path_name === '/' || path_name === '') return method_name;
@@ -35,8 +53,15 @@ var getOperationId = function getOperationId(method_name, path_name) {
   return _lodash2.default.camelCase(method_name.toLowerCase() + '-' + segments.join('-'));
 };
 
-function getViewForSwagger2(swagger) {
+function getViewForSwagger2(_swagger) {
   var authorized_methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'COPY', 'HEAD', 'OPTIONS', 'LINK', 'UNLIK', 'PURGE', 'LOCK', 'UNLOCK', 'PROPFIND'];
+  var swagger = undefined;
+
+  if ((typeof _swagger === 'undefined' ? 'undefined' : _typeof(_swagger)) === 'object') {
+    swagger = _swagger;
+  } else if (typeof _swagger === 'string') {
+    swagger = loadFile(_swagger);
+  }
 
   swagger.basePath = swagger.basePath || '/v1';
 

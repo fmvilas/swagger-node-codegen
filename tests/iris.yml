@@ -1,0 +1,310 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Iris
+  description: >
+    Video meetings integrated right inside your app.
+  contact:
+    name: Iris
+    url: 'http://irishd.io'
+    email: fmvilas@gmail.com
+  license:
+      name: Swedish API License Derivative
+      url: 'http://www.apilicens.se/en/dokumentation/resultat/?1=y&2=y&3=y&4=y&5=y&6=y&7=y&8=y&9=y&10=y&11=y&12=y&13=y&'
+host: iris.herokuapp.com
+basePath: /v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /customers:
+    get:
+      description: Customers
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of customers
+          required: false
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+      responses:
+        '200':
+          description: OK
+      security:
+        - oauth2:
+            - list_customers
+    post:
+      description: Customers
+      parameters:
+        - name: customer
+          in: body
+          description: The customer JSON you want to post
+          schema:
+            $ref: '#/definitions/Customer'
+          required: true
+      responses:
+        '201':
+          description: OK
+      security:
+        - oauth2:
+            - write_customers
+  '/customers/{id}':
+    get:
+      description: Customers
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+      security:
+        - oauth2:
+            - read_customers
+    put:
+      description: Customers
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        '202':
+          description: OK
+      security:
+        - oauth2:
+            - write_customers
+    delete:
+      description: Customers
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        '202':
+          description: OK
+      security:
+        - oauth2:
+            - write_customers
+  /rooms:
+    get:
+      description: |
+        Gets `Room` objects.
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of rooms
+          required: false
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            title: ArrayOfRooms
+            type: array
+            items:
+              $ref: '#/definitions/Room'
+      security:
+        - oauth2:
+            - read_rooms
+    post:
+      description: |
+        Creates new `Room` object.
+      parameters:
+        - name: room
+          in: body
+          description: The room JSON you want to post
+          schema:
+            $ref: '#/definitions/Room'
+          required: true
+      responses:
+        '201':
+          description: Make a new room
+      security:
+        - oauth2:
+            - write_rooms
+  '/rooms/{roomId}':
+    get:
+      description: |
+        Retrieves a room.
+      parameters:
+        - name: roomId
+          in: path
+          type: string
+          description: ID of the room
+          required: true
+      responses:
+        '200':
+          description: Sends the room with room Id
+      security:
+        - oauth2:
+            - read_rooms
+    put:
+      description: |
+        Updates a room.
+      parameters:
+        - name: roomId
+          in: path
+          type: string
+          description: ID of the room
+          required: true
+        - name: room
+          in: body
+          description: The pet JSON you want to post
+          schema:
+            $ref: '#/definitions/Room'
+          required: true
+      responses:
+        '200':
+          description: Updates the pet
+      security:
+        - oauth2:
+            - write_rooms
+    delete:
+      description: Deletes a room
+      parameters:
+        - in: path
+          name: roomId
+          description: Room id to delete
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Deletes the room
+      security:
+        - oauth2:
+            - write_rooms
+
+  /users:
+    get:
+      description: Users
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of users
+          required: false
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        - name: room
+          in: query
+          description: Filter by room
+          type: integer
+          required: false
+      responses:
+        '200':
+          description: OK
+      security:
+        - oauth2:
+            - read_users
+    post:
+      description: Users
+      parameters:
+        - name: user
+          in: body
+          description: The user JSON you want to post
+          schema:
+            $ref: '#/definitions/User'
+          required: true
+      responses:
+        '201':
+          description: OK
+      security:
+        - oauth2:
+            - write_users
+  '/users/{id}':
+    get:
+      description: Users
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+      security:
+        - oauth2:
+            - read_users
+    put:
+      description: Users
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        '202':
+          description: OK
+      security:
+        - oauth2:
+            - write_users
+    delete:
+      description: Users
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        '202':
+          description: OK
+      security:
+        - oauth2:
+            - write_users
+
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+  oauth2:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: /auth
+    tokenUrl: /auth/token
+    scopes:
+      list_customers: List all users
+      write_customers: Modify customers information
+      read_customers: Read customers information
+      write_users: Modify users information
+      read_users: Read users information
+      write_rooms: Modify rooms in your account
+      read_rooms: Read your rooms
+
+definitions:
+  Room:
+    type: object
+    properties:
+      name:
+        type: string
+      private:
+        type: boolean
+        default: false
+    required:
+      - name
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
+  Customer:
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name

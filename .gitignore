@@ -2,3 +2,5 @@
 node_modules
 npm-debug.log
 tests/generated
+tests/generated-yaml
+tests/generated-json

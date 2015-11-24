@@ -176,7 +176,7 @@ function generateDirectoriesStructure(config) {
 module.exports.generate = function (config) {
   var random_name = (0, _projectNameGenerator2.default)().dashed;
 
-  (0, _swagger2.default)(config.swagger);
+  config.swagger = (0, _swagger2.default)(config.swagger);
 
   _lodash2.default.defaultsDeep(config, {
     swagger: {
