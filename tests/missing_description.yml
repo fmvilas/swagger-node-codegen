@@ -236,3 +236,28 @@ paths:
       security:
         - oauth2:
             - read_users
+definitions:
+  Room:
+    type: object
+    properties:
+      name:
+        type: string
+      private:
+        type: boolean
+        default: false
+    required:
+      - name
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
+  Customer:
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
