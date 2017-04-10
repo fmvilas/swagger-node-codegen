@@ -29,3 +29,10 @@ generator.generate({
 }, (err) => {
   if (err) console.log(err.message);
 });
+
+generator.generate({
+  swagger: path.resolve(__dirname, 'missing_description.yml'),
+  target_dir: path.resolve(__dirname, 'generated-with-missing-description')
+}, (err) => {
+  if (err) console.log(err.message);
+});
