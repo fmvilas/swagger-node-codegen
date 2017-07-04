@@ -36,7 +36,7 @@ router.{{@key}}('{{../../subresource}}', (req, res, next) => {
     if (err) {
     {{#each ../responses}}
       {{#compare @key 400 operator=">="}}
-      const err_response = { status: {{@key}}, message: '{{../description}}' };
+      const err_response_{{@key}} = { status: {{@key}}, message: '{{../description}}' };
       return res.status({{@key}}).send(err_response);
       {{/compare}}
       {{#equal @key "default"}}
