@@ -40,7 +40,7 @@ router.{{@key}}('{{../../subresource}}', (req, res, next) => {
       return res.status({{@key}}).send(err_response);
       {{/compare}}
       {{#equal @key "default"}}
-      const err_response = { status: 200, message: '{{../description}}' };
+      const err_response = { status: 500, message: '{{../description}}' };
       return res.status(500).send(err_response);
       {{/equal}}
     {{/each}}
@@ -50,6 +50,9 @@ router.{{@key}}('{{../../subresource}}', (req, res, next) => {
       {{#compare @key 400 operator="<"}}
     res.status({{@key}}).send(data);
       {{/compare}}
+      {{#equal @key "default"}}
+      res.status(200).send(data);
+      {{/equal}}
     {{/each}}
   });
 });
