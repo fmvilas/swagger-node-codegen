@@ -3,6 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 exports.default = getViewForSwagger2;
 
 var _lodash = require('lodash');
@@ -23,10 +26,8 @@ var _jsonfile2 = _interopRequireDefault(_jsonfile);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
 var loadFile = function loadFile(path) {
-  if (path.match(/\.yml$/)) {
+  if (path.match(/\.ya?ml$/)) {
     return _yamljs2.default.load(path);
   }
 
@@ -55,7 +56,7 @@ var getOperationId = function getOperationId(method_name, path_name) {
 
 function getViewForSwagger2(_swagger) {
   var authorized_methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'COPY', 'HEAD', 'OPTIONS', 'LINK', 'UNLIK', 'PURGE', 'LOCK', 'UNLOCK', 'PROPFIND'];
-  var swagger = undefined;
+  var swagger = void 0;
 
   if ((typeof _swagger === 'undefined' ? 'undefined' : _typeof(_swagger)) === 'object') {
     swagger = _swagger;
@@ -73,7 +74,7 @@ function getViewForSwagger2(_swagger) {
       if (authorized_methods.indexOf(method_name.toUpperCase()) === -1) return;
 
       method['operationId'] = method['operationId'] || getOperationId(method_name, path_name);
-      method['descriptionLines'] = (0, _wordWrap2.default)(method['description'], { width: 60, indent: '' }).split(/\n/);
+      method['descriptionLines'] = (0, _wordWrap2.default)(method['description'] || method['summary'] || '', { width: 60, indent: '' }).split(/\n/);
       _lodash2.default.each(method.parameters, function (param, param_name) {
         if (param.$ref) {
           method.parameters.push(swagger.parameters[param.$ref]);
