@@ -1,5 +1,7 @@
 'use strict';
 
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _arguments = arguments;
 
 var _lodash = require('lodash');
@@ -12,8 +14,6 @@ var _handlebars2 = _interopRequireDefault(_handlebars);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
 _handlebars2.default.registerHelper('equal', function (lvalue, rvalue, options) {
   if (_arguments.length < 3) throw new Error('Handlebars Helper equal needs 2 parameters');
   if (lvalue != rvalue) {
@@ -21,6 +21,24 @@ _handlebars2.default.registerHelper('equal', function (lvalue, rvalue, options) 
   }
 
   return options.fn(undefined);
+});
+
+_handlebars2.default.registerHelper('endsWith', function (lvalue, rvalue, options) {
+  if (_arguments.length < 3) throw new Error('Handlebars Helper equal needs 2 parameters');
+
+  if (lvalue.lastIndexOf(rvalue) !== lvalue.length - 1) {
+    return options.inverse(undefined);
+  }
+  return options.fn(undefined);
+});
+
+_handlebars2.default.registerHelper('notEndsWith', function (lvalue, rvalue, options) {
+  if (_arguments.length < 3) throw new Error('Handlebars Helper equal needs 2 parameters');
+
+  if (lvalue.lastIndexOf(rvalue) !== lvalue.length - 1) {
+    return options.fn(undefined);
+  }
+  return options.inverse(undefined);
 });
 
 _handlebars2.default.registerHelper('validMethod', function (method, options) {
