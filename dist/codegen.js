@@ -71,7 +71,7 @@ function generateEndpoint(config, endpoint, endpoint_name) {
       endpoint: endpoint
     });
 
-    _fs2.default.writeFile(target_file, content, 0, 'utf8', function (err) {
+    _fs2.default.writeFile(target_file, content, 'utf8', function (err) {
       if (err) throw err;
     });
   });
@@ -103,7 +103,7 @@ function generateService(config, service, service_name) {
     var template = _handlebars2.default.compile(data.toString());
     var content = template({ service: service, openbrace: '{', closebrace: '}' });
 
-    _fs2.default.writeFile(target_file, content, 0, 'utf8', function (err) {
+    _fs2.default.writeFile(target_file, content, 'utf8', function (err) {
       if (err) throw err;
     });
   });
@@ -124,7 +124,7 @@ function generateFile(options, next) {
     var template_path = _path2.default.relative(templates_dir, _path2.default.resolve(root, file_name));
     var generated_path = _path2.default.resolve(target_dir, template_path);
 
-    _fs2.default.writeFile(generated_path, parsed_content, 0, 'utf8', function (err) {
+    _fs2.default.writeFile(generated_path, parsed_content, 'utf8', function (err) {
       if (err) throw err;
       next();
     });
