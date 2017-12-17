@@ -106,7 +106,7 @@ try {
 }
 ```
 
-## Author
+## Author
 
 Fran Méndez ([fmvilas@gmail.com](mailto:fmvilas@gmail.com))
 
