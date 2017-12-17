@@ -4,9 +4,8 @@ env:
   node: true
   es6: true
 
-ecmaFeatures:
-  forOf: true
-  modules: true
+parserOptions:
+  ecmaVersion: 2017
 
 rules:
   # Possible Errors
@@ -25,12 +24,10 @@ rules:
   radix: 2
   wrap-iife: [2, outside]
 
-  # Strict Mode
-  strict: [2, global]
-
   # Variables
   no-shadow: 0
   no-use-before-define: [2, nofunc]
+  no-unused-vars: [2, { "argsIgnorePattern": "next" }]
 
   # Node.js
   no-process-exit: 0
@@ -50,7 +47,6 @@ rules:
   func-style: 0
   max-nested-callbacks: 0
   new-cap: [2, {capIsNewExceptions: [JID]}]
-  no-inline-comments: 2
   no-multiple-empty-lines: [2, {max: 1}]
   no-nested-ternary: 2
   semi-spacing: [2, {before: false, after: true}]
@@ -58,7 +54,7 @@ rules:
   padded-blocks: [2, never]
   quote-props: [2, as-needed]
   space-before-function-paren: [2, always]
-  space-after-keywords: [2, always]
+  keyword-spacing: [2, {after: true}]
   space-before-blocks: [2, always]
   array-bracket-spacing: [2, never]
   computed-property-spacing: [2, never]

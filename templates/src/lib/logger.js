@@ -1,16 +1,17 @@
-import bunyan from 'bunyan';
+const bunyan = require('bunyan');
 
 /**
  * @param {Object} config Logger configuration
  */
-export default function logger (config) {
+module.exports = config => {
   const bunyanConfig = [];
+  const levels = Object.keys(config.levels);
 
-  for (const level in config.levels) {
+  levels.forEach(level => {
     const bunyanLevel = config.levels[level];
-    if (!bunyanLevel) continue;
+    if (!bunyanLevel) return;
 
-    if (level === 'debug' && config.level !== 'debug') continue;
+    if (level === 'debug' && config.level !== 'debug') return;
 
     const logger = {level};
 
@@ -21,11 +22,11 @@ export default function logger (config) {
     } else if (bunyanLevel) {
       logger.path = bunyanLevel;
     } else {
-      continue;
+      return;
     }
 
     bunyanConfig.push(logger);
-  }
+  });
 
   return bunyan.createLogger({ name: config.name, streams: bunyanConfig });
-}
+};

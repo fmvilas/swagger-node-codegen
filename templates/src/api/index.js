@@ -1,8 +1,8 @@
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import config from '../lib/config';
-import logger from '../lib/logger';
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const config = require('../lib/config');
+const logger = require('../lib/logger');
 
 const log = logger(config.logger);
 const app = express();
