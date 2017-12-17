@@ -33,18 +33,18 @@ router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
     {{#ifNoSuccessResponses ../responses}}
     res.status(200).send(result.data);
     {{else}}
-    res.status(result.code || 200).send(result.data);
+    res.status(result.status || 200).send(result.data);
     {{/ifNoSuccessResponses}}
   } catch (err) {
     {{#ifNoErrorResponses ../responses}}
     return res.status(500).send({
       status: 500,
-      message: 'Server Error'
+      error: 'Server Error'
     });
     {{else}}
-    return res.status(err.code).send({
-      status: err.code,
-      message: err.message
+    return res.status(err.status).send({
+      status: err.status,
+      error: err.error
     });
     {{/ifNoErrorResponses}}
   }

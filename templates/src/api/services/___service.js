@@ -17,7 +17,7 @@ module.exports.{{../operationId}} = async (options) => {
   // This function should return as follows:
   //
   // return {
-  //   code: 200, // Or another success code.
+  //   status: 200, // Or another success code.
   //   data: [] // Optional. You can put whatever you want here.
   // };
   //
@@ -25,9 +25,14 @@ module.exports.{{../operationId}} = async (options) => {
   // you should throw an error as follows:
   //
   // throw new Error({
-  //   code: 500, // Or another error code.
-  //   message: 'Server Error' // Or another error message.
+  //   status: 500, // Or another error code.
+  //   error: 'Server Error' // Or another error message.
   // });
+
+  return {
+    code: 200,
+    data: '{{../operationId}} ok!'
+  };
 };
 
     {{/validMethod}}

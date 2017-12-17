@@ -14,16 +14,14 @@ app.use(cookieParser());
 /*
  * Routes
  */
+{{#each @root.swagger.endpoints}}
 {{#endsWith @root.swagger.basePath '/'}}
-{{#each swagger.endpoints}}
-app.use('{{@root.swagger.basePath}}{{this}}', require('./routes/{{this}}'));
-{{/each}}
+app.use('{{@root.swagger.basePath}}{{..}}', require('./routes/{{..}}'));
 {{/endsWith}}
 {{#notEndsWith @root.swagger.basePath '/'}}
-{{#each swagger.endpoints}}
-app.use('{{@root.swagger.basePath}}/{{this}}', require('./routes/{{this}}'));
-{{/each}}
+app.use('{{@root.swagger.basePath}}/{{..}}', require('./routes/{{..}}'));
 {{/notEndsWith}}
+{{/each}}
 
 // catch 404
 app.use((req, res, next) => {

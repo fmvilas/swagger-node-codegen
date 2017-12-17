@@ -1,6 +1,6 @@
 {
   "name": "{{package.name}}",
-  "description": "{{swagger.info.description}}",
+  "description": "{{inline swagger.info.description}}",
   "version": "{{swagger.info.version}}",
   "scripts": {
     "start": "node src/bin/www",
