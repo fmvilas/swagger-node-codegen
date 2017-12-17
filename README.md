@@ -72,7 +72,7 @@ codegen.generate({
 });
 ```
 
-The **swagger** parameter can be either JSON or a path pointing to a JSON or YAML file.
+The `swagger` parameter can be either JSON or a path pointing to a JSON or YAML file.
 
 ```js
 const path = require('path');
