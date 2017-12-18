@@ -1,21 +1,17 @@
-import express from 'express';
-import {{service_name}} from '../services/{{service_name}}';
+const express = require('express');
+const {{camelCase service_name}} = require('../services/{{service_name}}');
 
-const router = express.Router();
+const router = new express.Router();
 
 {{#each endpoint}}
   {{#each this.path}}
     {{#validMethod @key}}
 /**
- {{#if ../summary}}
- * {{../summary}}
- *
- {{/if}}
  {{#each ../descriptionLines}}
- * {{this}}
+ * {{{this}}}
  {{/each}}
  */
-router.{{@key}}('{{../../subresource}}', (req, res, next) => {
+router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
   const options = {
     {{#each ../parameters}}
       {{#equal this.in "query"}}
@@ -32,25 +28,26 @@ router.{{@key}}('{{../../subresource}}', (req, res, next) => {
     {{/each}}
   };
 
-  {{../../../service_name}}.{{../operationId}}(options, (err, data) => {
-    if (err) {
-    {{#each ../responses}}
-      {{#compare @key 400 operator=">="}}
-      const err_response_{{@key}} = { status: {{@key}}, message: '{{../description}}' };
-      return res.status({{@key}}).send(err_response);
-      {{/compare}}
-    {{/each}}
-    }
-
-    {{#each ../responses}}
-      {{#compare @key 400 operator="<"}}
-    res.status({{@key}}).send(data);
-      {{/compare}}
-      {{#equal @key "default"}}
-      res.status(200).send(data);
-      {{/equal}}
-    {{/each}}
-  });
+  try {
+    const result = await {{camelCase ../../../service_name}}.{{../operationId}}(options);
+    {{#ifNoSuccessResponses ../responses}}
+    res.status(200).send(result.data);
+    {{else}}
+    res.status(result.status || 200).send(result.data);
+    {{/ifNoSuccessResponses}}
+  } catch (err) {
+    {{#ifNoErrorResponses ../responses}}
+    return res.status(500).send({
+      status: 500,
+      error: 'Server Error'
+    });
+    {{else}}
+    return res.status(err.status).send({
+      status: err.status,
+      error: err.error
+    });
+    {{/ifNoErrorResponses}}
+  }
 });
 
     {{/validMethod}}

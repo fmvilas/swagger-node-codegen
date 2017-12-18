@@ -1,8 +1,8 @@
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import config from '../lib/config';
-import logger from '../lib/logger';
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const config = require('../lib/config');
+const logger = require('../lib/logger');
 
 const log = logger(config.logger);
 const app = express();
@@ -14,16 +14,13 @@ app.use(cookieParser());
 /*
  * Routes
  */
+{{#each @root.swagger.endpoints}}
 {{#endsWith @root.swagger.basePath '/'}}
-{{#each swagger.endpoints}}
-app.use('{{@root.swagger.basePath}}{{this}}', require('./routes/{{this}}'));
-{{/each}}
+app.use('{{@root.swagger.basePath}}{{..}}', require('./routes/{{..}}'));
+{{else}}
+app.use('{{@root.swagger.basePath}}/{{..}}', require('./routes/{{..}}'));
 {{/endsWith}}
-{{#notEndsWith @root.swagger.basePath '/'}}
-{{#each swagger.endpoints}}
-app.use('{{@root.swagger.basePath}}/{{this}}', require('./routes/{{this}}'));
 {{/each}}
-{{/notEndsWith}}
 
 // catch 404
 app.use((req, res, next) => {

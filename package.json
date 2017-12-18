@@ -1,10 +1,13 @@
 {
   "name": "swagger-node-codegen",
-  "main": "./dist/codegen.js",
+  "main": "./lib/codegen.js",
   "version": "0.2.0",
-  "description": "A Swagger codegen for Node.js",
+  "description": "A OpenAPI 3.x/Swagger 2 codegen for Node.js",
   "scripts": {
     "test": "babel-node tests/test"
+  },
+  "bin": {
+    "snc": "./cli.js"
   },
   "bugs": {
     "url": "https://github.com/fmvilas/swagger-node-codegen/issues"
@@ -15,35 +18,29 @@
   },
   "keywords": [
     "swagger",
+    "openapi",
     "rest",
     "es6",
+    "es7",
     "es2015",
     "node.js",
     "codegen",
     "generator"
   ],
   "author": {
-    "name": "Francisco Méndez Vilas",
+    "name": "Fran Méndez",
     "email": "fmvilas@gmail.com",
     "url": "http://fmvilas.com"
   },
   "homepage": "https://github.com/fmvilas/swagger-node-codegen",
   "dependencies": {
+    "commander": "^2.12.2",
     "fs.extra": "1.3.2",
-    "handlebars": "4.0.4",
-    "jsonfile": "2.2.3",
+    "handlebars": "^4.0.4",
+    "js-yaml": "^3.10.0",
+    "json-schema-ref-parser": "^4.0.4",
     "lodash": "3.10.1",
     "project-name-generator": "2.1.1",
-    "word-wrap": "1.1.0",
-    "yamljs": "0.2.4"
-  },
-  "devDependencies": {
-    "babel": "6.1.18",
-    "babel-cli": "6.1.18",
-    "babel-preset-es2015": "6.1.18",
-    "bunyan": "1.5.1",
-    "gulp": "3.9.0",
-    "gulp-babel": "6.1.0",
-    "lodash": "3.10.1"
+    "word-wrap": "1.1.0"
   }
 }
