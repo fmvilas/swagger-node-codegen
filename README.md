@@ -1,5 +1,5 @@
-<div style="text-align:center">![](logo.png)</div>
-<div style="text-align:center">**OpenAPI Node.js<br>Code Generator**</div>
+<div style="text-align:center"><img src="logo.png"></div>
+<div style="text-align:center;font-weight:bold;">OpenAPI Node.js<br>Code Generator</div>
 <br><br>
 Use your API OpenAPI 3.x/Swagger 2 definition to generate Node.js ES7-compliant code for your API.
 
