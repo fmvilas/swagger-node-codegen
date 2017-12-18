@@ -140,6 +140,4 @@ Generates a code skeleton for an API given a Swagger file.
 
 ## Author
 
-Fran Méndez ([fmvilas@gmail.com](mailto:fmvilas@gmail.com))
-
-[@fmvilas](http://twitter.com/fmvilas)
+Fran Méndez ([@fmvilas](http://twitter.com/fmvilas))
