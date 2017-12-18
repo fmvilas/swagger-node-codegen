@@ -32,7 +32,7 @@ npm install --save swagger-node-codegen
 ### From the command-line interface (CLI)
 
 ```bash
-  Usage: cli [options] <swaggerFile>
+  Usage: snc [options] <swaggerFile>
 
 
   Options:

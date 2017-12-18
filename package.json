@@ -2,7 +2,7 @@
   "name": "swagger-node-codegen",
   "main": "./lib/codegen.js",
   "version": "0.2.0",
-  "description": "A Swagger codegen for Node.js",
+  "description": "A OpenAPI 3.x/Swagger 2 codegen for Node.js",
   "scripts": {
     "test": "babel-node tests/test"
   },
@@ -18,15 +18,17 @@
   },
   "keywords": [
     "swagger",
+    "openapi",
     "rest",
     "es6",
+    "es7",
     "es2015",
     "node.js",
     "codegen",
     "generator"
   ],
   "author": {
-    "name": "Francisco Méndez Vilas",
+    "name": "Fran Méndez",
     "email": "fmvilas@gmail.com",
     "url": "http://fmvilas.com"
   },
