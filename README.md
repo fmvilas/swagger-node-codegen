@@ -142,4 +142,4 @@ Generates a code skeleton for an API given a Swagger file.
 
 Fran Méndez ([fmvilas@gmail.com](mailto:fmvilas@gmail.com))
 
-[www.fmvilas.com](http://www.fmvilas.com)
+[@fmvilas](http://twitter.com/fmvilas)
