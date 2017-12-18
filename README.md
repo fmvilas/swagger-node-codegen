@@ -107,6 +107,36 @@ try {
 }
 ```
 
+## API Documentation
+
+### Modules
+
+<dl>
+<dt><a href="#module_codegen">codegen</a></dt>
+<dd><p>This module generates a code skeleton for an API using Swagger.</p>
+</dd>
+<dt><a href="#module_codegen">codegen</a> ⇒ <code>Promise</code></dt>
+<dd><p>Generates a code skeleton for an API given a Swagger file.</p>
+</dd>
+</dl>
+
+<a name="module_codegen"></a>
+
+#### codegen
+This module generates a code skeleton for an API using Swagger.
+
+<a name="module_codegen"></a>
+
+#### codegen ⇒ <code>Promise</code>
+Generates a code skeleton for an API given a Swagger file.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| config | <code>Object</code> | Configuration options |
+| config.swagger | <code>Object</code> \| <code>String</code> | Swagger JSON or a string pointing to a Swagger file. |
+| config.target_dir | <code>String</code> | Path to the directory where the files will be generated. |
+
 ## Author
 
 Fran Méndez ([fmvilas@gmail.com](mailto:fmvilas@gmail.com))
