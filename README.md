@@ -109,9 +109,25 @@ try {
 
 ## API Documentation
 
+### Modules
+
+<dl>
+<dt><a href="#module_codegen">codegen</a></dt>
+<dd><p>This module generates a code skeleton for an API using Swagger.</p>
+</dd>
+<dt><a href="#codegen.module_generate">generate</a> ⇒ <code>Promise</code></dt>
+<dd><p>Generates a code skeleton for an API given a Swagger file.</p>
+</dd>
+</dl>
+
 <a name="module_codegen"></a>
 
-### codegen ⇒ <code>Promise</code>
+### codegen
+This module generates a code skeleton for an API using Swagger.
+
+<a name="codegen.module_generate"></a>
+
+#### generate ⇒ <code>Promise</code>
 Generates a code skeleton for an API given a Swagger file.
 
 
@@ -120,6 +136,7 @@ Generates a code skeleton for an API given a Swagger file.
 | config | <code>Object</code> | Configuration options |
 | config.swagger | <code>Object</code> \| <code>String</code> | Swagger JSON or a string pointing to a Swagger file. |
 | config.target_dir | <code>String</code> | Path to the directory where the files will be generated. |
+
 
 ## Author
 
