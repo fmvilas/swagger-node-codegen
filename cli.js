@@ -36,7 +36,7 @@ codegen.generate({
   console.log(yellow('Check out your shiny new API at ') + magenta(program.output) + yellow('.'));
 }).catch(err => {
   console.error(red('Aaww 💩. Something went wrong:'));
-  console.error(red(err.stack));
+  console.error(red(err.stack || err.message));
 });
 
 process.on('unhandledRejection', (err) => console.error(err));

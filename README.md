@@ -1,4 +1,5 @@
-# Swagger ES7 Node.js code generator
+<div style="text-align:center">![](logo.png)</div>
+<div style="text-align:center">**OpenAPI Node.js<br>Code Generator**</div>
 
 ## Description
 

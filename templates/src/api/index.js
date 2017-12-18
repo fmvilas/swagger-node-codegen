@@ -17,10 +17,9 @@ app.use(cookieParser());
 {{#each @root.swagger.endpoints}}
 {{#endsWith @root.swagger.basePath '/'}}
 app.use('{{@root.swagger.basePath}}{{..}}', require('./routes/{{..}}'));
-{{/endsWith}}
-{{#notEndsWith @root.swagger.basePath '/'}}
+{{else}}
 app.use('{{@root.swagger.basePath}}/{{..}}', require('./routes/{{..}}'));
-{{/notEndsWith}}
+{{/endsWith}}
 {{/each}}
 
 // catch 404
