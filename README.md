@@ -56,8 +56,6 @@ snc swagger.yaml -o ./my-api
 
 ### As a module in your project
 
-Now, in your app:
-
 ```js
 const path = require('path');
 const codegen = require('swagger-node-codegen');
