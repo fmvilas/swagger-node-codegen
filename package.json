@@ -1,11 +1,8 @@
 {
   "name": "swagger-node-codegen",
   "main": "./lib/codegen.js",
-  "version": "0.2.0",
-  "description": "A OpenAPI 3.x/Swagger 2 codegen for Node.js",
-  "scripts": {
-    "test": "babel-node tests/test"
-  },
+  "version": "1.0.0",
+  "description": "An OpenAPI 3.x/Swagger 2 code generator for Node.js",
   "bin": {
     "snc": "./cli.js"
   },
