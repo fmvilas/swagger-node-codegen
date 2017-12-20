@@ -56,8 +56,6 @@ snc swagger.yaml -o ./my-api
 
 ### As a module in your project
 
-Now, in your app:
-
 ```js
 const path = require('path');
 const codegen = require('swagger-node-codegen');
@@ -113,28 +111,28 @@ try {
 
 <dl>
 <dt><a href="#module_codegen">codegen</a></dt>
-<dd><p>This module generates a code skeleton for an API using Swagger.</p>
+<dd><p>This module generates a code skeleton for an API using OpenAPI/Swagger.</p>
 </dd>
 <dt><a href="#codegen.module_generate">generate</a> ⇒ <code>Promise</code></dt>
-<dd><p>Generates a code skeleton for an API given a Swagger file.</p>
+<dd><p>Generates a code skeleton for an API given an OpenAPI/Swagger file.</p>
 </dd>
 </dl>
 
 <a name="module_codegen"></a>
 
 ### codegen
-This module generates a code skeleton for an API using Swagger.
+This module generates a code skeleton for an API using OpenAPI/Swagger.
 
 <a name="codegen.module_generate"></a>
 
 #### generate ⇒ <code>Promise</code>
-Generates a code skeleton for an API given a Swagger file.
+Generates a code skeleton for an API given an OpenAPI/Swagger file.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | config | <code>Object</code> | Configuration options |
-| config.swagger | <code>Object</code> \| <code>String</code> | Swagger JSON or a string pointing to a Swagger file. |
+| config.swagger | <code>Object</code> \| <code>String</code> | OpenAPI/Swagger JSON or a string pointing to an OpenAPI/Swagger file. |
 | config.target_dir | <code>String</code> | Path to the directory where the files will be generated. |
 
 
