@@ -1,4 +1,4 @@
-{{#each service}}
+{{#each operation}}
   {{#each this.path}}
     {{#validMethod @key}}
 /**

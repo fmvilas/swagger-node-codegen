@@ -37,9 +37,10 @@ npm install --save swagger-node-codegen
 
   Options:
 
-    -V, --version             output the version number
-    -o, --output <outputDir>  directory where to put the generated files (defaults to current directory)
-    -h, --help                output usage information
+    -V, --version                  output the version number
+    -o, --output <outputDir>       directory where to put the generated files (defaults to current directory)
+    -t, --templates <templateDir>  directory where templates are located (defaults to internal nodejs templates)
+    -h, --help                     output usage information
 ```
 
 #### Examples
@@ -134,6 +135,7 @@ Generates a code skeleton for an API given an OpenAPI/Swagger file.
 | config | <code>Object</code> | Configuration options |
 | config.swagger | <code>Object</code> \| <code>String</code> | OpenAPI/Swagger JSON or a string pointing to an OpenAPI/Swagger file. |
 | config.target_dir | <code>String</code> | Path to the directory where the files will be generated. |
+| config.templates| <code>String</code> | Path to the directory where custom templates are (optional). |
 
 
 ## Author
