@@ -32,7 +32,7 @@ if (!swaggerFile) {
 codegen.generate({
   swagger: swaggerFile,
   target_dir: program.output,
-  templates: program.templates
+  templates: program.templates ? path.resolve(process.cwd(), program.templates) : undefined
 }).then(() => {
   console.log(green('Done! ✨'));
   console.log(yellow('Check out your shiny new API at ') + magenta(program.output) + yellow('.'));
