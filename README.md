@@ -138,6 +138,9 @@ Generates a code skeleton for an API given an OpenAPI/Swagger file.
 | config.templates| <code>String</code> | Path to the directory where custom templates are (optional). |
 
 
+## Templates
+You can create your own [templates](./templates/README.md).
+
 ## Author
 
 Fran Méndez ([@fmvilas](http://twitter.com/fmvilas))
