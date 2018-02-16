@@ -30,7 +30,7 @@ module.exports.{{../operationId}} = async (options) => {
   // });
 
   return {
-    code: 200,
+    status: 200,
     data: '{{../operationId}} ok!'
   };
 };
