@@ -9,6 +9,9 @@
   "bugs": {
     "url": "https://github.com/fmvilas/swagger-node-codegen/issues"
   },
+  "engines" : { 
+    "node" : ">=7.6" 
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/fmvilas/swagger-node-codegen.git"

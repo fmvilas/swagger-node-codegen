@@ -27,6 +27,10 @@ To use it as a module in your project:
 npm install --save swagger-node-codegen
 ```
 
+## Requirements
+
+* Node.js v7.6+
+
 ## Usage
 
 ### From the command-line interface (CLI)
