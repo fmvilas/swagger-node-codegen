@@ -9,8 +9,8 @@
   "bugs": {
     "url": "https://github.com/fmvilas/swagger-node-codegen/issues"
   },
-  "engines" : { 
-    "node" : ">=7.6" 
+  "engines" : {
+    "node" : ">=7.6"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,12 @@
     "email": "fmvilas@gmail.com",
     "url": "http://fmvilas.com"
   },
+  "contributors": [
+    {
+      "name": "Richard Klose",
+      "email": "richard.klose@gmail.com"
+    }
+  ],
   "homepage": "https://github.com/fmvilas/swagger-node-codegen",
   "dependencies": {
     "commander": "^2.12.2",
