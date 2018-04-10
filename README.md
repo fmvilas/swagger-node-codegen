@@ -27,6 +27,10 @@ To use it as a module in your project:
 npm install --save swagger-node-codegen
 ```
 
+## Requirements
+
+* Node.js v7.6+
+
 ## Usage
 
 ### From the command-line interface (CLI)
@@ -141,6 +145,7 @@ Generates a code skeleton for an API given an OpenAPI/Swagger file.
 ## Templates
 You can create your own [templates](./templates/README.md).
 
-## Author
+## Authors
 
-Fran Méndez ([@fmvilas](http://twitter.com/fmvilas))
+* Fran Méndez ([@fmvilas](http://twitter.com/fmvilas))
+* Richard Klose ([@richardklose](http://github.com/richardklose))
