@@ -87,4 +87,4 @@ const user = require('./routes/user.route.js')
 |swagger.endpoints| object | All first level endpoints (e.g  `pet` and `user`) |
 
 ## Additional handlebars helpers
-All additional Handlebars helpers are located in `/lib/helpers/handlebars`.
+All additional Handlebars helpers are located in [`lib/helpers/handlebars`](https://github.com/fmvilas/swagger-node-codegen/blob/master/lib/helpers/handlebars.js).
