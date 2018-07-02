@@ -88,3 +88,6 @@ const user = require('./routes/user.route.js')
 
 ## Additional handlebars helpers
 All additional Handlebars helpers are located in [`lib/helpers/handlebars`](https://github.com/fmvilas/swagger-node-codegen/blob/master/lib/helpers/handlebars.js).
+
+## Custom handlebars helpers
+Add your own handlebars helpers [`lib/helpers/handlebars/extension`](https://github.com/fmvilas/swagger-node-codegen/blob/master/lib/helpers/extension.js)
