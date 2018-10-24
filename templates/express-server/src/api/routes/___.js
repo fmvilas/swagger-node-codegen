@@ -13,6 +13,9 @@ const router = new express.Router();
  */
 router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
   const options = {
+    {{#if ../requestBody}}
+    body: req.body{{#compare (lookup ../parameters 'length') 0 operator = '>' }},{{/compare}}
+    {{/if}}
     {{#each ../parameters}}
       {{#equal this.in "query"}}
     {{../name}}: req.query.{{../name}}{{#unless @last}},{{/unless}}
