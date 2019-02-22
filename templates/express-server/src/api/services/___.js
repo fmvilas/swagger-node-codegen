@@ -1,6 +1,7 @@
 {{#each operation}}
   {{#each this.path}}
     {{#validMethod @key}}
+const ServerError = require('../../lib/error');
 /**
  * @param {Object} options
 {{#each ../parameters}}
@@ -24,7 +25,7 @@ module.exports.{{../operationId}} = async (options) => {
   // If an error happens during your business logic implementation,
   // you should throw an error as follows:
   //
-  // throw new Error({
+  // throw new ServerError({
   //   status: 500, // Or another error code.
   //   error: 'Server Error' // Or another error message.
   // });
