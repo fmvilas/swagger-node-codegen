@@ -1,7 +1,7 @@
+const ServerError = require('../../lib/error');
 {{#each operation}}
   {{#each this.path}}
     {{#validMethod @key}}
-const ServerError = require('../../lib/error');
 /**
  * @param {Object} options
 {{#each ../parameters}}
