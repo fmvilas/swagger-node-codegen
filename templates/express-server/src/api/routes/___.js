@@ -13,16 +13,19 @@ const router = new express.Router();
  */
 router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
   const options = {
+    {{#if ../requestBody}}
+    body: req.body{{#compare (lookup ../parameters 'length') 0 operator = '>' }},{{/compare}}
+    {{/if}}
     {{#each ../parameters}}
       {{#equal this.in "query"}}
-    {{../name}}: req.query.{{../name}}{{#unless @last}},{{/unless}}
+    {{{quote ../name}}}: req.query['{{../name}}']{{#unless @last}},{{/unless}}
       {{/equal}}
       {{#equal this.in "path"}}
-    {{../name}}: req.params.{{../name}}{{#unless @last}},{{/unless}}
+    {{{quote ../name}}}: req.params['{{../name}}']{{#unless @last}},{{/unless}}
       {{/equal}}
       {{#match @../key "(post|put)"}}
         {{#equal ../in "body"}}
-    {{../name}}: req.body.{{../name}}{{#unless @last}},{{/unless}}
+    {{{quote ../name}}}: req.body['{{../name}}']{{#unless @last}},{{/unless}}
         {{/equal}}
       {{/match}}
     {{/each}}
@@ -42,10 +45,7 @@ router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
       error: 'Server Error'
     });
     {{else}}
-    return res.status(err.status).send({
-      status: err.status,
-      error: err.error
-    });
+    next(err);
     {{/ifNoErrorResponses}}
   }
 });
