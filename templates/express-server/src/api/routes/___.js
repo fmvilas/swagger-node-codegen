@@ -45,10 +45,7 @@ router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
       error: 'Server Error'
     });
     {{else}}
-    return res.status(err.status).send({
-      status: err.status,
-      error: err.error
-    });
+    next(err);
     {{/ifNoErrorResponses}}
   }
 });
