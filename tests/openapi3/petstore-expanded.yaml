@@ -54,6 +54,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    head:
+      description: |
+        Gets the total count of all pets
+      operationId: countPets
+      parameters:
+        - name: tags
+          in: query
+          description: tags to filter by
+          required: false
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: pets count
+          headers:
+            X-Total-Count:
+              description: The total count of pets.
+              style: simple
+              explode: false
+              schema:
+                type: integer
     post:
       description: Creates a new pet in the store.  Duplicates are allowed
       operationId: addPet
