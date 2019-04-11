@@ -59,7 +59,7 @@ router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
  * {{{this}}}
  {{/each}}
  */
-router.{{@key}}('{{../../subresource}}', async (reqtest, res, next) => {
+router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
   const options = {
     {{#if ../requestBody}}
     body: req.body{{#compare (lookup ../parameters 'length') 0 operator = '>' }},{{/compare}}
