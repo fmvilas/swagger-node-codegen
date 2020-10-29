@@ -3,6 +3,7 @@
   "main": "./lib/codegen.js",
   "version": "1.6.3",
   "description": "An OpenAPI 3.x/Swagger 2 code generator for Node.js",
+  "license": "Apache-2.0",
   "bin": {
     "snc": "./cli.js"
   },
