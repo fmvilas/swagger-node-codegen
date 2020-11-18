@@ -72,7 +72,7 @@ router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
     {{{quote ../name}}}: req.params['{{../name}}']{{#unless @last}},{{/unless}}
       {{/equal}}
       {{#equal this.in "header"}}
-    {{{quote ../name}}}: req.header['{{../name}}']{{#unless @last}},{{/unless}}
+{{{quote ../name}}}: req.get('{{../name}}'){{#unless @last}},{{/unless}}
       {{/equal}}
       {{#match @../key "(post|put)"}}
         {{#equal ../in "body"}}
