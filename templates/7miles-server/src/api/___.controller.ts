@@ -8,7 +8,7 @@ import * as Joi from '@hapi/joi';
 import * as Boom from "@hapi/boom";
 import { Mapper } from "../helpers/mapper";
 import { I{{capitalize operation_name}}Controller } from './interfaces/{{lowercase operation_name}}.interface.ts';
-// TODO import { CarModel } from "../model/car";
+import { CarModel } from "../model/car";
 
 
 @injectable()
