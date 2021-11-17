@@ -6,9 +6,10 @@ import { HapiRoute } from "../decorators/decorators";
 import { HapiController } from "./hapi-controller";
 import * as Joi from '@hapi/joi';
 import * as Boom from "@hapi/boom";
-import { CarModel } from "../model/car";
 import { Mapper } from "../helpers/mapper";
-// TODO:  import { Car } from "../entity/car";
+import { I{{capitalize operation_name}}Controller } from './interfaces/{{lowercase operation_name}}.interface.ts';
+// TODO import { CarModel } from "../model/car";
+
 
 @injectable()
 class {{capitalize operation_name}}Controller extends HapiController {
@@ -36,7 +37,8 @@ class {{capitalize operation_name}}Controller extends HapiController {
  * {{{this}}}
  {{/each}}
  */
-public async {{@key}}'{{../../subresource}}'(request: Request, toolkit: ResponseToolkit) {
+ public async {{@key}}{{../operationId}}(request: Request, toolkit: ResponseToolkit);
+ /*
   const options = {
   {{#if ../requestBody}}
   body: req.body{{#compare (lookup ../parameters 'length') 0 operator = '>' }},{{/compare}}
@@ -71,7 +73,8 @@ public async {{@key}}'{{../../subresource}}'(request: Request, toolkit: Response
       next(err);
       {{/ifNoErrorResponses}}
       }
-    });
+      */
+    }
     {{/validMethod}}
   {{/each}}
 {{/each}}
@@ -84,47 +87,19 @@ public async {{@key}}'{{../../subresource}}'(request: Request, toolkit: Response
  * {{{this}}}
  {{/each}}
  */
-router.{{@key}}('{{../../subresource}}', async (req, res, next) => {
-  const options = {
-    {{#if ../requestBody}}
-    body: req.body{{#compare (lookup ../parameters 'length') 0 operator = '>' }},{{/compare}}
-    {{/if}}
-    {{#each ../parameters}}
-      {{#equal this.in "query"}}
-    {{{quote ../name}}}: req.query['{{../name}}']{{#unless @last}},{{/unless}}
-      {{/equal}}
-      {{#equal this.in "path"}}
-    {{{quote ../name}}}: req.params['{{../name}}']{{#unless @last}},{{/unless}}
-      {{/equal}}
-      {{#equal this.in "header"}}
-    {{{quote ../name}}}: req.header['{{../name}}']{{#unless @last}},{{/unless}}
-      {{/equal}}
-      {{#match @../key "(post|put)"}}
-        {{#equal ../in "body"}}
-    {{{quote ../name}}}: req.body['{{../name}}']{{#unless @last}},{{/unless}}
-        {{/equal}}
-      {{/match}}
-    {{/each}}
-  };
-
-  try {
-    const result = await {{camelCase ../../../operation_name}}.{{../operationId}}(options);
-    {{#ifNoSuccessResponses ../responses}}
-    res.status(200).send(result.data);
-    {{else}}
-    res.status(result.status || 200).send(result.data);
-    {{/ifNoSuccessResponses}}
-  } catch (err) {
-    {{#ifNoErrorResponses ../responses}}
-    return res.status(500).send({
-      status: 500,
-      error: 'Server Error'
-    });
-    {{else}}
-    next(err);
-    {{/ifNoErrorResponses}}
+  @HapiController({
+    method: '{{allcaps @key}}',
+    path: '{{../../subresource}}',
+    options: {
+      validate: { },
+      description: '{{ ../summary }}',
+      tags: [/* TODO */],
+      auth: false
+    }
+  })
+  public async {{../operationId}}(request: Request, toolkit: ResponseToolkit)
+   return toolkit.response().code(501);
   }
-});
 
     {{/validMethod}}
   {{/each}}
