@@ -6,6 +6,8 @@ import { HapiController } from "./hapi-controller";
 import { {{capitalize this}}Controller } from "./{{this}}.controller";
 {{/each}}
 /**
+ * This class is automatically generated from swagger.  It is safe to overwrite an existing file with this one.
+ *
  * The purpose of this class is to simply collect all of our controllers so we can generate
  * routes for them in one place.
  *
