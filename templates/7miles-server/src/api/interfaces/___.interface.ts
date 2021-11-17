@@ -1,3 +1,5 @@
+import { Request, ResponseToolkit } from "@hapi/hapi";
+
 interface I{{capitalize operation_name}}Controller {
 
 
@@ -10,7 +12,7 @@ interface I{{capitalize operation_name}}Controller {
  * {{{this}}}
  {{/each}}
  */
-//This is a head operation
+  public async {{@key}}{{../operationId}}(request: Request, toolkit: ResponseToolkit);
 
     {{/validMethod}}
   {{/each}}
@@ -19,21 +21,12 @@ interface I{{capitalize operation_name}}Controller {
 {{#each operation}}
   {{#each this.path}}
     {{#validMethod @key}}
-/**
- {{#each ../descriptionLines}}
- * {{{this}}}
- {{/each}}
- */
   /**
   {{#each ../descriptionLines}}
   * {{{this}}}
   {{/each}}
   */
-
-  /**
-   * {{this}}
-   */
-  public async {{@key}}{{capitalize this.operationId}}(request: Request, toolkit: ResponseToolkit);
+  public async {{@key}}{{../operationId}}(request: Request, toolkit: ResponseToolkit);
 
     {{/validMethod}}
   {{/each}}
