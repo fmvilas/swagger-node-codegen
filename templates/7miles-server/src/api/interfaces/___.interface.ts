@@ -12,7 +12,7 @@ interface I{{capitalize operation_name}}Controller {
  * {{{this}}}
  {{/each}}
  */
-  public async {{@key}}{{../operationId}}(request: Request, toolkit: ResponseToolkit);
+  public async {{../operationId}}(request: Request, toolkit: ResponseToolkit);
 
     {{/validMethod}}
   {{/each}}
@@ -26,7 +26,7 @@ interface I{{capitalize operation_name}}Controller {
   * {{{this}}}
   {{/each}}
   */
-  public async {{@key}}{{../operationId}}(request: Request, toolkit: ResponseToolkit);
+  public async {{../operationId}}(request: Request, toolkit: ResponseToolkit);
 
     {{/validMethod}}
   {{/each}}
