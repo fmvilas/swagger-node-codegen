@@ -94,10 +94,27 @@ components:
           type: string
         tag:
           type: string
+        owner:
+          type: object
+          $ref: "#/components/schemas/Owner"
     Pets:
       type: array
       items:
         $ref: "#/components/schemas/Pet"
+    Owner:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        address:
+          type: string
+        pets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pet'
     Error:
       type: object
       required:
