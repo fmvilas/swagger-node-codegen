@@ -1,7 +1,7 @@
 import { Container } from 'inversify';
 import { TYPES } from './types';
 {{#each swagger.endpoints}}
-import { {{capitalize this}}Controller } from "./{{this}}.controller";
+import { {{capitalize this}}Controller } from "../api/{{this}}.controller";
 {{/each}}
 
 /**
