@@ -21,7 +21,7 @@ import { {{modelsForController operation}} } from '../model/models';
  * this case, you can find the missing (added) method(s) in the generated controller and copy the stubs to your implementation.
  */
 @injectable()
-class {{capitalize operation_name}}Controller extends HapiController {
+class {{capitalize operation_name}}Controller extends HapiController implements I{{capitalize operation_name}}Controller {
 
   /**
    * Here we are also injecting the car service to manage interactions with the database
